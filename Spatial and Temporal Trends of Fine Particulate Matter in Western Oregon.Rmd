@@ -672,7 +672,7 @@ Unfortunately from the seasonal plots below for the Lafayette site we cannot con
 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=12, fig.height=12}
-multiplot(w13f, s13f, su13f, f13f, w14f, s14f, su14f, f13f, cols=2)
+multiplot(w13f, s13f, su13f, f13f, w14f, s14f, su14f, f14f, cols=2)
 ```
 
 ##Particulate Matter Maps of Western Oregon
