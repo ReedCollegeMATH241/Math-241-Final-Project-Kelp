@@ -15,7 +15,7 @@ However, not all engines combust their fuels cleanly and completely and therefor
 
 One may ask why may we care about PM2.5? Perhaps most immediately because fine PM is an environmental health hazard. It has the potential to cause a slew of different health effects from asthma exacerbation to higher rates of mortality in men, women, and children. The pollutant also has certain atmospheric climate effects such as global warming and regional cooling.   
 
-The raw PM data (CSV) was supplied by Anthony Barnack from the Oregon Department of Environmental Quality (DEQ). The data comes from nine different monitoring sites from around Western Oregon from locations such as Sauvie Island to Salem. All data have been collected by particulate matter monitoring instruments such as a DustTrak and AeroTrak. The data ranges over a two year period from January 2013 to December 2014. PM and other air quality pollutant data may be obtained from the DEQ upon request.  
+The raw PM data (CSV) was supplied by Anthony Barnack from the Oregon Department of Environmental Quality (DEQ). The data comes from nine different monitoring sites from around Western Oregon from locations such as Sauvie Island to Salem. All data have been collected by particulate matter monitoring instruments such as a DustTrak and AeroTrak. The data ranges over a two year period from January 2013 to February 2015 (only up to November 2014 used to compare two years, 8 seasons). PM and other air quality pollutant data may be obtained from the DEQ upon request.  
 
 The following report contains a temporal and spatial analysis of fine PM data from Western Oregon. 
 
@@ -532,7 +532,7 @@ f14i<- ggplot(fall14means, aes(x=Pacific_Daylight_Time, y=SweetHome)) + geom_lin
 
 
 
-#multiplot(f14a, f14b, f14c, f14d, f14e, f14f, f14g, f14h, f14i, cols=3) #Beaverton large peak event
+#multiplot(f14a, f14b, f14c, f14d, f14e, f14f, f14g, f14h, f14i, cols=3) #Beaverton large peak event corrected 
 ```
 
 
