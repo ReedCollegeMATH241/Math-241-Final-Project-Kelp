@@ -13,7 +13,7 @@ This analysis explores the spatial and temporal distributions of fine particulat
 
 We aim to unpack trends and correlations relating to fine PM and determine who is at risk from this pollution. 
 
-Below is an example map of Portland, OR in winter of 2014 where the size of the circles represent the monitored concentration of the PM 2.5 in micrograms/m3 and the location of the circles is the specific DEQ monitoring site. 
+Below is an example map of Portland, OR in winter of 2014 where the size of the circles represent the monitored concentration of the PM 2.5 in micrograms/m3 and the location of the circles is the specific DEQ monitoring site. The other graph is a time series plot over two years of PM 2.5 data at SE Lafayette Portland site.   
 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -41,6 +41,53 @@ pdxmapw14<- pland + geom_point(data=PDXmapdatawinter, aes(x=lon, y=lat), color="
 ##PDX Map Winter 2014
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=6, fig.height=6}
 pland + geom_point(data=PDXmapdatawinter, aes(x=lon, y=lat), color="black", size=PDXmapdatawinter$con, alpha=0.7)
+```
+
+
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(lubridate))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(magrittr))
+suppressPackageStartupMessages(library(devtools))
+suppressPackageStartupMessages(library(stringr))
+
+
+
+DEQ <- read.csv("./pm2.5 for reed corrected.csv", header=TRUE, stringsAsFactors = FALSE) %>% select(-X) %>% tbl_df()
+
+DEQ<- DEQ[-1,] 
+DEQ<- DEQ[-1,]
+
+colnames(DEQ)[1] <- "Temp_Time"
+colnames(DEQ)[2] <- "Albany_Calapooia_School"
+colnames(DEQ)[3] <- "Beaverton_Highland_Park"
+colnames(DEQ)[4] <- "Carus_Spangler_Rd"
+colnames(DEQ)[5] <- "Corvallis_Circle_Blvd"
+colnames(DEQ)[6] <- "Hillsboro_Hare_Field"
+colnames(DEQ)[7] <- "Portland_SE_Lafayette"
+colnames(DEQ)[8] <- "Salem_State_Hospital"
+colnames(DEQ)[9] <- "Sauvie_Island"
+colnames(DEQ)[10] <- "Sweet_Home_Fire_Department"
+
+
+temp.dates <- mdy_hm(DEQ$Temp_Time, format= "%m %d %Y %H%M%p" )
+temp.dates <- temp.dates[-length(temp.dates)]
+DEQ$Pacific_Daylight_Time <- temp.dates
+
+DEQ$Pacific_Daylight_Time<- floor_date(DEQ$Pacific_Daylight_Time, "day")
+
+yearmeanexample<- group_by(DEQ, Pacific_Daylight_Time) %>% summarise(PDX=mean(as.numeric(Portland_SE_Lafayette)))
+```
+## SE Lafayette Portland, OR PM 2.5 
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=12, fig.height=6}
+ggplot(yearmeanexample, aes(x=Pacific_Daylight_Time, y=PDX)) + geom_line(color = "firebrick")+ 
+  xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("2013-14 SE Lafayette Portland") + 
+  theme_classic() + scale_y_continuous(limits = c(0, 45))
+
 ```
 
 
