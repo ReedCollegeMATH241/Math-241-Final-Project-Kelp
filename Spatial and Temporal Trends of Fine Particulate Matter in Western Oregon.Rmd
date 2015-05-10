@@ -409,37 +409,37 @@ spring14means<- group_by(spring14data, Pacific_Daylight_Time) %>% summarise(Alba
 
 s14a<- ggplot (spring14means, aes(x=Pacific_Daylight_Time, y=Albany)) + geom_line(color = "red") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Albany Calapooia School") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 s14b<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=Beaverton)) + geom_line(color = "blue") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Beaverton Highland Park") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 #no Carus Data
 
 s14d<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=Corvallis)) + geom_line(color = "black") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Corvallis Circle Blvd.") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 s14e<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=Hillsboro)) + geom_line(color = "pink")+ 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Hillsboro Hare Field") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 s14f<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=Lafayette)) + geom_line(color = "orange") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 SE Lafayette, Portland") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 s14g<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=Salem)) + geom_line(color = "purple") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Salem State Hospital") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 s14h<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=Sauvie)) + geom_line(color = "dodgerblue") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Sauvie Island") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 s14i<- ggplot(spring14means, aes(x=Pacific_Daylight_Time, y=SweetHome)) + geom_line(color = "firebrick") + 
   xlab("Pacific Daylight Time") + ylab("PM2.5 (ug/m3)") + ggtitle ("Spring 2014 Sweet Home Fire Department") + 
-  theme_classic() + scale_y_continuous(limits = c(0, 20))
+  theme_classic() + scale_y_continuous(limits = c(0, 40))
 
 #multiplot(s14a, s14b, s14d, s14e, s14f, s14g, s14h, s14i, cols=3)
 ```
