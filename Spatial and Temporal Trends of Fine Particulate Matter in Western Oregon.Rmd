@@ -32,7 +32,7 @@ suppressPackageStartupMessages(library(knitr))
 suppressPackageStartupMessages(library(ggmap))
 
 
-DEQ <- read.csv("pm2.5 for reed corrected.csv", header=TRUE, stringsAsFactors = FALSE) %>% select(-X) %>% tbl_df()
+DEQ <- read.csv("./pm2.5 for reed corrected.csv", header=TRUE, stringsAsFactors = FALSE) %>% select(-X) %>% tbl_df()
 
 DEQ<- DEQ[-1,] 
 DEQ<- DEQ[-1,]

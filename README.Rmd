@@ -2,21 +2,45 @@
 title: "Read Me"
 author: "Makoto Kelp"
 date: "May 9, 2015"
-output: html_document
+output:
+  html_document:
+    keep_md: yes
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+On a national scale, Portland, OR is fairly under monitored when it comes to its air quality. There have been efforts by the Oregon Department of Environmental Quality (DEQ) and other smaller institutions, such as Reed College, to help ameliorate this issue of under coverage. In today's world with such "hot topic" and contentious issues as global warming and its concomitant public health concerns, monitoring the quality of our air is as important as ever.    
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+This analysis explores the spatial and temporal distributions of fine particulate matter (PM 2.5), an environmental pollutant produced from incomplete and inefficient combustion. PM 2.5 is known to cause deleterious health effects from asthma exacerbation to higher rates of mortality in men, women, and children. 
 
-```{r}
-summary(cars)
+We aim to unpack trends and correlations relating to fine PM and determine who is at risk from this pollution. 
+
+Below is an example map of Portland, OR in winter of 2014 where the size of the circles represent the monitored concentration of the PM 2.5 in micrograms/m3 and the location of the circles is the specific DEQ monitoring site. 
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+suppressPackageStartupMessages(library(ggmap))
+
+PDXmapdatawinter <- 
+  data.frame(
+    location = c('Beaverton Highland Park', 'Carus Spangler Road', 
+                 'Hillsboro Hare Field','SE Lafayette, Portland', 
+                 'Sauvie Island'
+    ),
+    lat = c(45.4702, 45.2593, 45.5285, 45.4966, 45.7685),
+    lon = c(-122.8162, -122.588, -122.9724, -122.6029, -122.7721),
+    con = c(10.06423, NaN, 13.37603, 10.98643, 7.373769)
+  )
+
+PDX <- get_map("Portland, Oregon", zoom=10, maptype = "roadmap", color= "color")
+
+pland <- ggmap(PDX)
+
+pdxmapw14<- pland + geom_point(data=PDXmapdatawinter, aes(x=lon, y=lat), color="black", size=PDXmapdatawinter$con, alpha=0.7)
 ```
 
-You can also embed plots, for example:
 
-```{r, echo=FALSE}
-plot(cars)
+##PDX Map Winter 2014
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=6, fig.height=6}
+pland + geom_point(data=PDXmapdatawinter, aes(x=lon, y=lat), color="black", size=PDXmapdatawinter$con, alpha=0.7)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
