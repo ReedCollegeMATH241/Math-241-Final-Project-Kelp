@@ -8,6 +8,7 @@ This analysis explores the spatial and temporal distributions of fine particulat
 
 We aim to unpack trends and correlations relating to fine PM and determine who is at risk from this pollution. 
 
+Below is an example map of Portland, OR in winter of 2014 where the size of the circles represent the monitored concentration of the PM 2.5 in micrograms/m3 and the location of the circles is the specific DEQ monitoring site. 
 
 
 

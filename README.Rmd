@@ -44,7 +44,6 @@ pland + geom_point(data=PDXmapdatawinter, aes(x=lon, y=lat), color="black", size
 ```
 
 
-
 For my analysis of these spatial and temporal trends please view:
 
 "Spatial and Temporal Trends of Fine Particulate Matter in Western Oregon.Rmd"
